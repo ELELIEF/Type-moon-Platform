@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="elelief.typemoon.mapper.AdminMapper">
+<insert id="insertAdmin">
+    insert into admin(adm_name, adm_password, adm_level) values(#{admName},#{admPassword},#{admLevel})
+</insert>
+<select id="selectAdminLogin" resultType="elelief.typemoon.pojo.Admin">
+select *from admin where adm_name=#{username} and adm_password=#{password}
+</select>
+    <delete id="deleteAdmin" parameterType="string">
+        delete from admin where adm_name=#{adminName}
+    </delete>
+    <select id="adminExist" resultType="Integer">
+        select count(*) from admin where adm_name=#{adminName}
+    </select>
+</mapper>
